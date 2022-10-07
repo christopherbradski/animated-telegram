@@ -24,12 +24,16 @@ Builder.load_string("""
     Button:
         id: btnExit
         text: "exit"
-        on_release: app.stop(), Window.close()
+        on_release: app.on_exit_btn()
 """)
 
 class DemoApp(App, BoxLayout):
     def build(self):
         return self
+
+    def on_exit_btn(self):
+        App.get_running_app().stop()
+        Window.close()
 
 if __name__ == "__main__":
     DemoApp().run()
